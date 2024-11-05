@@ -15,9 +15,10 @@ public class LauncherJugador {
         for(Jugador s : listaObjetos) listaHilos.add(new Thread(s, "Hilo num " + listaObjetos.indexOf(s)));
 
 
+
+
+
         for(Thread t : listaHilos) t.start();
-
-
 
         for(Thread t : listaHilos) t.join();
     }
