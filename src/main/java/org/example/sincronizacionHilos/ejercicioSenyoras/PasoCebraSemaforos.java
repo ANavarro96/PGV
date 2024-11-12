@@ -18,7 +18,7 @@ public class PasoCebraSemaforos {
         semaphore.acquire(5);
     }
 
-    public synchronized void salirSenyora(String nombre) throws InterruptedException {
+    public void salirSenyora(String nombre) throws InterruptedException {
         semaphore.release(5);
     }
 }

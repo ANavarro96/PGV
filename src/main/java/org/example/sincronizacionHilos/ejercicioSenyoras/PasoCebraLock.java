@@ -32,7 +32,7 @@ public class PasoCebraLock {
         public void entrarSenyora(String nombre) throws InterruptedException {
             lock.lock();
             while (haySenyoraPasando || ciclistasPasando > 0) {
-                wait();  // Esperar si ya hay otra señora pasando
+                esperando.await();  // Esperar si ya hay otra señora pasando
             }
             senyorasEsperando--;
             haySenyoraPasando = true;
