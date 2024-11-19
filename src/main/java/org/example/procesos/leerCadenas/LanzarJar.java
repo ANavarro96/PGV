@@ -8,11 +8,11 @@ import java.io.OutputStreamWriter;
 public class LanzarJar {
     public static void main(String[] args) {
         try {
-
             // Ejecutar el archivo JAR
             ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "out/artifacts/PGV_lanzarJar/PGV.jar");
-            processBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-            // processBuilder.inheritIO() -> así la entrada y salida del proceso hijo se convierten en las del padre, es decir, en estándar.
+            // processBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+             processBuilder.inheritIO(); //-> así la entrada y salida del proceso hijo se convierten en las del padre, es decir, en estándar.
+            //processBuilder.redirectInput(new File("src/main/java/org/example/procesos/leerCadenas/ejemplo.txt"));
             Process process = processBuilder.start();
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
@@ -22,7 +22,7 @@ public class LanzarJar {
             bw.flush();
 
 
-            process.waitFor();
+            process.waitFor(); // hilo.join();
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
